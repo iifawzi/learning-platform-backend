@@ -1,0 +1,26 @@
+{
+  "name": "learning-platform-backend",
+  "version": "1.0.0",
+  "description": "a full Learning Platform includes video, exams and live board. (more than 300k earnings before the end of 2021 insha'allah, 15/10/2020)",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iifawzi/learning-platform-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iifawzi/learning-platform-backend/issues"
+  },
+  "homepage": "https://github.com/iifawzi/learning-platform-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.5"
+  }
+}
