@@ -7,5 +7,12 @@
         "name": "test_eduction",
         "username": "root",
         "password": "rootroot"
+      },
+      "jwt":{
+        "secret":"FAWZI_ENCRYPT_JWI_SECRET",
+        "expiresIn":"6h"
+      },
+      "bcrypt": {
+        "saltRounds": 6
       }
 }
