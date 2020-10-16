@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const {ErrorHandler} = require("../helpers/error");
+const errors = require("../utils/errors");
 
 
 exports.createToken = (payload)=>{
@@ -27,6 +28,6 @@ exports.decodeToken = (token)=>{
         const user_data = jwt.decode(token);
         return user_data;
     }catch(err){
-        throw new ErrorHandler(401,"Token is invalid");
+        throw new ErrorHandler(401,errors.INVALID_TOKEN);
     }
 };

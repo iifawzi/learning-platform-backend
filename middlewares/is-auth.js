@@ -1,13 +1,13 @@
 const { ErrorHandler } = require("../helpers/error");
 const {checkToken} = require("../helpers/jwt");
-
+const errors = require("../utils/errors");
 
 const isAuth = ()=>{
     return (req, res, next) => {
         try {
             const encoded_token = req.headers.authorization;
             if (!encoded_token) {
-                throw new ErrorHandler(401, "User is not Authenticated");
+                throw new ErrorHandler(401, errors.NOT_AUTENTICATED);
             } else {
                 let splicedToken;
                 if (encoded_token.startsWith("Bearer ")) {
