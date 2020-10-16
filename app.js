@@ -11,7 +11,7 @@ RoutesSettings(app);
 app.use(config.get("settings.apis_prefix"), routes);
 
 
-// Error Handeler (Any error will be populated to this function then send the resposne):
+// Error Handeler (Any error will be populated to this function to send a resposne):
 mainErrorHandler(app);
 
 module.exports = app;
