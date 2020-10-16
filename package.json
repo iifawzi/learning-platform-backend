@@ -21,6 +21,8 @@
     "body-parser": "^1.19.0",
     "config": "^3.3.2",
     "express": "^4.17.1",
-    "nodemon": "^2.0.5"
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.5",
+    "sequelize": "^6.3.5"
   }
 }

@@ -1,5 +1,11 @@
 {
     "settings": {
         "apis_prefix": "/api"
-    }
+    },
+    "database": {
+        "host": "localhost",
+        "name": "test_eduction",
+        "username": "root",
+        "password": "rootroot"
+      }
 }
