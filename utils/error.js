@@ -14,3 +14,9 @@ const handleError = (err,res)=>{
         data: {}
     });
 };
+
+module.exports = {
+    ErrorHandler,
+    handleError,
+};
+  
