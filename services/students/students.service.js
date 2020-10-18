@@ -1,8 +1,8 @@
 const studentsModel = require("./students.model");
 
 // get a specific student: 
-exports.getStudent  = async (phone_number,attributes) => {
-    const student = await studentsModel.findOne({where: {phone_number}, attributes: attributes});
+exports.getStudent  = async (phone_number,attributes,raw = true) => {
+    const student = await studentsModel.findOne({where: {phone_number}, attributes: attributes, raw});
     return student;
 };
 //delete a specific student by phone_number: 
