@@ -1,4 +1,4 @@
-const { ErrorHandler } = require("../helpers/error");
+const { ErrorHandler } = require("../utils/error");
 const {checkToken} = require("../helpers/jwt");
 const errors = require("../utils/errors");
 

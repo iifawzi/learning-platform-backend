@@ -10,7 +10,7 @@
       },
       "jwt":{
         "secret":"FAWZI_ENCRYPT_JWI_SECRET",
-        "expiresIn":"6h"
+        "expiresIn":"24h"
       },
       "bcrypt": {
         "saltRounds": 6

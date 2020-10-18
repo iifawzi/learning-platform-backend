@@ -1,4 +1,4 @@
-const respond = (status, statusCode, data, res) => {
+const respondWith = (status, statusCode, data, res) => {
     res.status(statusCode).json({
         status,
         message: "success",
@@ -6,4 +6,4 @@ const respond = (status, statusCode, data, res) => {
     });
 };
 
-module.exports = respond;
+module.exports = respondWith;

@@ -1,11 +1,11 @@
 // Required: 
 const express = require("express");
-const app = express();
 const config = require("config");
 const RoutesSettings = require("./startup/RoutesSettings");
 const mainErrorHandler = require("./startup/mainErrorHandler");
 const {initDatabase} = require("./startup/db");
 const routes = require("./startup/routes");
+const app = express();
 
 // Init Routes Settings: 
 RoutesSettings(app);

@@ -1,4 +1,4 @@
-const { ErrorHandler } = require("./error");
+const { ErrorHandler } = require("../utils/error");
 const validateSchema = (schema, property, abortEarly = false) => {
     return (req, res, next) => {
         if (!req[property]) {

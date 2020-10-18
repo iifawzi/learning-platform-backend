@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const config = require("config");
-const { ErrorHandler } = require("./error");
+const { ErrorHandler } = require("../utils/error");
 const errors = require("../utils/errors");
 
 exports.encryptPassword = async (password)=>{

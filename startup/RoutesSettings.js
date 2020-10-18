@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 module.exports = (app)=>{
      // Body Parser Settings: 
-    app.use(bodyParser.urlencoded({extended: true}));
+   app.use(bodyParser.json());
     // Required Headers: 
     app.use((req,res,next)=>{
         res.setHeader("Access-Control-Allow-Origin", "*");
