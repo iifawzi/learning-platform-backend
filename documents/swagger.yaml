@@ -1,0 +1,117 @@
+swagger: "2.0"
+info:
+  description: "This the api documintation of the e-learning platform system."
+  version: "1.0.0"
+  title: "E-Learning Platform"
+  contact:
+    email: "iifawzie@gmail.com"
+host: "localhost:5000"
+basePath: "/api"
+tags:
+- name: "students"
+  description: "Everything about students"
+schemes:
+- "http"
+paths:
+  /students:
+    post:
+      tags:
+      - "students"
+      summary: "signup a new student"
+      description: "This api is used to signup a student"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Student Info's object used to signup"
+        required: true
+        schema:
+          $ref: "#/definitions/signup_student_body"
+      responses:
+        "201":
+          description: 201 (Created Successfully)
+          schema:
+            $ref: '#/definitions/signup_student_response'
+        '400':
+          description: 400 (Bad Request - input is incorrect or missing)
+          schema:
+            $ref: '#/definitions/error_400'
+definitions:
+  signup_student_body:
+    type: "object"
+    properties:
+      student_name:
+        type: "string"
+      phone_number:
+        type: "string"
+      password:
+        type: "string"
+  signup_student_response:
+    type: "object"
+    properties:
+      student_name:
+        type: "string"
+      phone_number:
+        type: "string"
+      student_id:
+        type: "integer"
+      subscription_end_date:
+        type: "string"
+      account_status:
+        type: boolean
+      refresh_token:
+        type: "string"
+      token:
+        type: "string"
+    example: 
+      status: true
+      message: success
+      data:
+        account_status: false
+        student_id: 4
+        student_name: Fawzi
+        phone_number: 01090243795
+        refresh_token: 69ffe2a19d204371bceb28170b545052
+        subscription_end_date: '2020-11-18'
+        updatedAt: '2020-10-18T01:13:00.283Z'
+        createdAt: '2020-10-18T01:13:00.283Z'
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50X2lkIjo0LCJzdHVkZW50X25hbWUiOiJGYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2MDI5ODM1ODAsImV4cCI6MTYwMzA2OTk4MH0.u5hPv2oOq39G_1CAS_bOBG4lAYrT2yQobooAYSCGprQ
+      
+  error_409:
+    type: "object"
+    description: "CONFLICT"
+    example:
+      status: false
+      message: "Error explaniation will be shown here"
+      data: []
+  error_401:
+    type: "string"
+    description: "Unauthorized"
+    example:
+      status: false
+      message: "Error explaniation will be shown here"
+      data: []
+  error_400:
+    type: "string"
+    description: "Bad Request"
+    example:
+      status: false
+      message: "Error explaniation will be shown here"
+      data: []
+  error_403:
+    type: "string"
+    description: "Forbidden"
+    example:
+      status: false
+      message: "Error explaniation will be shown here"
+      data: []
+  error_404:
+    type: "string"
+    description: "Not Found"
+    example:
+      status: false
+      message: "Error explaniation will be shown here"
+      data: []
