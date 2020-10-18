@@ -24,7 +24,7 @@ try {
     const refresh_token = crypto.randomBytes(16).toString("hex");
     student_info.refresh_token = refresh_token;
     // set the end subscription date: 
-    student_info.subscription_end_date = format(addMonths(new Date(),1),'yyyy-MM-dd');
+    student_info.subscription_end_date = format(addMonths(new Date(),1),'yyyy-MM-dd'); // TODO:: THIS IS DEPEND ON THE TEACHER NEEDS. (USE CONFIG)
     // add the student: 
     const addStudent = await studentsServices.addStudent(student_info);
     // delete the password from response and generate the token:
