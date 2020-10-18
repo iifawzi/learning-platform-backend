@@ -5,6 +5,11 @@ exports.getStudent  = async (phone_number,attributes) => {
     const student = await studentsModel.findOne({where: {phone_number}, attributes: attributes});
     return student;
 };
+//delete a specific student by phone_number: 
+exports.deleteStudent  = async (phone_number) => {
+    const student = await studentsModel.destroy({where: {phone_number}});
+    return student;
+};
 // add new student: 
 exports.addStudent = async (student_info)=>{
     const student = await studentsModel.create(student_info);

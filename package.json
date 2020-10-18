@@ -4,7 +4,8 @@
   "description": "a full Learning Platform includes video, exams and live board. (more than 300k earnings before the end of 2021 insha'allah, 15/10/2020)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "NODE_ENV=test mocha \"./{,!(node_modules)/**/}*.test.js\" --exit"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,10 @@
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.5",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.0"
   }
 }
