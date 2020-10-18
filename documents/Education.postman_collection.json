@@ -173,6 +173,175 @@
 					"body": "{\n    \"status\": false,\n    \"message\": \"Resource already exists\",\n    \"data\": {}\n}"
 				}
 			]
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone_number\": \"01090243795\",\n    \"password\": \"12qwaszx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE}}/api/students/signin",
+					"host": [
+						"{{BASE}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "signin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"01090243795\",\n    \"password\": \"12qwaszx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/students/signin",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "413"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"19d-c84PzPMo3KOorlciTA3BYArnkAw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Oct 2020 21:54:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"student_id\": 1,\n        \"phone_number\": \"01090243795\",\n        \"student_name\": \"Fawzi\",\n        \"refresh_token\": \"7a92299daf865ace374e999c2fe02234\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50X2lkIjoxLCJzdHVkZW50X25hbWUiOiJGYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2MDMwNTgwODksImV4cCI6MTYwMzE0NDQ4OX0.rzuImCu26vMTEu82DKlHdqGYyWwHnj2O4_J6oSz6kS0\"\n    }\n}"
+				},
+				{
+					"name": "signin - account not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"01090243795\",\n    \"password\": \"12qwaszx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/students/signin",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"signin"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "64"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"40-LoTBjyAvBzqACuJsFGnOSKREC24\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 Oct 2020 13:36:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": false,\n    \"message\": \"You're not authenticated.\",\n    \"data\": {}\n}"
+				}
+			]
 		}
 	],
 	"auth": {
@@ -202,7 +371,7 @@
 	],
 	"variable": [
 		{
-			"id": "828eb7f9-c60e-40d7-b1c2-a4f2b446e4f2",
+			"id": "ec085c3b-83cc-4a3f-bf75-3f1ccb8457cd",
 			"key": "BASE",
 			"value": "localhost:5000"
 		}

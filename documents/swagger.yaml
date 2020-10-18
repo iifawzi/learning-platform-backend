@@ -13,7 +13,7 @@ tags:
 schemes:
 - "http"
 paths:
-  /students:
+  /students/signup:
     post:
       tags:
       - "students"
@@ -39,7 +39,70 @@ paths:
           description: 400 (Bad Request - input is incorrect or missing)
           schema:
             $ref: '#/definitions/error_400'
+        '409':
+          description: 409 (CONFLICT - Resource already registered)
+          schema:
+            $ref: '#/definitions/error_409'
+  /students/signin:
+    post:
+      tags:
+      - "students"
+      summary: "signin a student"
+      description: "This api is used to signin a student"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Student Info's object used to signin"
+        required: true
+        schema:
+          $ref: "#/definitions/signin_student_body"
+      responses:
+        "200":
+          description: 200 (login Successfully)
+          schema:
+            $ref: '#/definitions/signin_student_response'
+        '400':
+          description: 400 (Bad Request - input is incorrect or missing)
+          schema:
+            $ref: '#/definitions/error_400'
+        '401':
+          description: 401 (Not Authenticated - wrong phone_number or password)
+          schema:
+            $ref: '#/definitions/error_401'
 definitions:
+  signin_student_body:
+    type: "object"
+    properties:
+      phone_number:
+        type: "string"
+      password:
+        type: "string"
+  signin_student_response:
+    type: "object"
+    properties:
+      student_name:
+        type: "string"
+      phone_number:
+        type: "string"
+      student_id:
+        type: "integer"
+      refresh_token:
+        type: "string"
+      token:
+        type: "string"
+    example: 
+      status: true
+      message: success
+      data:
+        student_id: 1
+        phone_number: 01090243795
+        student_name: Fawzi
+        refresh_token: 7a92299daf865ace374e999c2fe02234
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50X2lkIjoxLCJzdHVkZW50X25hbWUiOiJGYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2MDMwNTgwODksImV4cCI6MTYwMzE0NDQ4OX0.rzuImCu26vMTEu82DKlHdqGYyWwHnj2O4_J6oSz6kS0
   signup_student_body:
     type: "object"
     properties:
@@ -79,7 +142,6 @@ definitions:
         updatedAt: '2020-10-18T01:13:00.283Z'
         createdAt: '2020-10-18T01:13:00.283Z'
         token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50X2lkIjo0LCJzdHVkZW50X25hbWUiOiJGYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2MDI5ODM1ODAsImV4cCI6MTYwMzA2OTk4MH0.u5hPv2oOq39G_1CAS_bOBG4lAYrT2yQobooAYSCGprQ
-      
   error_409:
     type: "object"
     description: "CONFLICT"
