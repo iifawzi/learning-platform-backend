@@ -1,6 +1,6 @@
 const {db} = require("../../startup/db");
 const Sequelize = require("sequelize");
-
+const config = require("config");
 module.exports = db.define("students", {
     student_id: {
         type: Sequelize.INTEGER,
@@ -21,7 +21,7 @@ module.exports = db.define("students", {
     },
     account_status: {
         type: Sequelize.BOOLEAN,
-        defaultValue: false, // TODO:: THIS IS DEPEND ON THE TEACHER NEEDS. (USE CONFIG)
+        defaultValue: config.get("depends.student_account_status_by_default"),
         allowNull: false,
     },
     subscription_end_date: {

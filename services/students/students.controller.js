@@ -1,5 +1,6 @@
 const { ErrorHandler } = require("../../utils/error");
 const errors = require("../../utils/errors");
+const config = require("config");
 const respondWith = require("../../utils/respond");
 const { createToken } = require("../../helpers/jwt");
 const { student_token } = require("../../helpers/tokens");
@@ -7,7 +8,6 @@ const { encryptPassword, comparePassword } = require("../../helpers/bcrypt");
 const crypto = require("crypto");
 const {format,addMonths} = require("date-fns");
 const studentsServices = require("./students.service");
-
 
 exports.signup = async (req,res,next)=>{
 try {
@@ -24,7 +24,7 @@ try {
     const refresh_token = crypto.randomBytes(16).toString("hex");
     student_info.refresh_token = refresh_token;
     // set the end subscription date: 
-    student_info.subscription_end_date = format(addMonths(new Date(),1),'yyyy-MM-dd'); // TODO:: THIS IS DEPEND ON THE TEACHER NEEDS. (USE CONFIG)
+    student_info.subscription_end_date = format(addMonths(new Date(),config.get("depends.subscription_end_after_month")),'yyyy-MM-dd');
     // add the student: 
     const addStudent = await studentsServices.addStudent(student_info);
     // delete the password from response and generate the token:

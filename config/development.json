@@ -14,5 +14,9 @@
       },
       "bcrypt": {
         "saltRounds": 6
+      }, 
+      "depends": {
+        "subscription_end_after_month": 1,
+        "student_account_status_by_default": false
       }
 }

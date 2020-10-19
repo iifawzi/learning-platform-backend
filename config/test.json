@@ -1,18 +1,22 @@
 {
-    "settings": {
-        "apis_prefix": "/api"
+  "settings": {
+      "apis_prefix": "/api"
+  },
+  "database": {
+      "host": "localhost",
+      "name": "test_eduction",
+      "username": "root",
+      "password": "rootroot"
     },
-    "database": {
-        "host": "localhost",
-        "name": "test_eduction",
-        "username": "root",
-        "password": "rootroot"
-      },
-      "jwt":{
-        "secret":"FAWZI_ENCRYPT_JWI_SECRET",
-        "expiresIn":"24h"
-      },
-      "bcrypt": {
-        "saltRounds": 6
-      }
+    "jwt":{
+      "secret":"FAWZI_ENCRYPT_JWI_SECRET",
+      "expiresIn":"24h"
+    },
+    "bcrypt": {
+      "saltRounds": 6
+    }, 
+    "depends": {
+      "subscription_end_after_month": 1,
+      "student_account_status_by_default": false
+    }
 }
