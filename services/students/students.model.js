@@ -14,6 +14,7 @@ module.exports = db.define("students", {
     phone_number: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING,
@@ -32,4 +33,11 @@ module.exports = db.define("students", {
         type: Sequelize.STRING,
         allowNull: false,
     }
+}, {
+    indexes: [
+        {
+            fields: ["phone_number"],
+            unique: true,
+        },
+    ]
 });
