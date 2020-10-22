@@ -2,9 +2,7 @@ const chai = require("chai");
 const request = require('supertest');
 const server = require("../../../server");
 const { deleteStudent } = require("../students.service");
-
 const expect = chai.expect;
-chai.should();
 
 describe("/students", ()=>{
     /*

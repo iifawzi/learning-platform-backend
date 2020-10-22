@@ -7,7 +7,7 @@ const isAuth = ()=>{
         try {
             const encoded_token = req.headers.authorization;
             if (!encoded_token) {
-                throw new ErrorHandler(401, errors.NOT_AUTHENTICATED);
+                throw new ErrorHandler(401, errors.TOKEN_NOT_AUTHENTICATED);
             } else {
                 let splicedToken;
                 if (encoded_token.startsWith("Bearer ")) {

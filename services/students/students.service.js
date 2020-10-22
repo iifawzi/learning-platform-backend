@@ -1,7 +1,7 @@
 const studentsModel = require("./students.model");
 
 // get a specific student: 
-exports.getStudent  = async (phone_number,attributes,raw = true) => {
+exports.getStudent  = async (phone_number,attributes,raw = true) => { // raw will be used when need to update only, to get a model object.
     const student = await studentsModel.findOne({where: {phone_number}, attributes: attributes, raw});
     return student;
 };

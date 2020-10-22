@@ -62,5 +62,24 @@ try {
 };
 
 exports.refresh_token = async (req,res,next)=>{
-
+    try {
+        const requester = req.requester;
+        const {refresh_token} = req.body;
+        // get the student's refresh_token using his phone number: 
+        const student_info = await studentsServices.getStudent(requester.phone_number, ["refresh_token","student_id"]);
+        // if the student's not exists: 
+        if (!student_info){
+            throw new ErrorHandler(404,errors.NOT_FOUND);
+        };
+        // get the student's refresh_token using his phone number: 
+        if (student_info.refresh_token !== refresh_token){
+            throw new ErrorHandler(401,errors.NOT_AUTHENTICATED);
+        };
+        // make a new token:  
+        const token = createToken(student_token(requester.student_id,requester.student_name,requester.phone_number));
+        // return the new token: 
+        return respondWith(true,200,{authorization:token}, res);
+    }catch(err){
+        next(err);
+    }
 };

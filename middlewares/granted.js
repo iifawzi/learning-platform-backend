@@ -4,7 +4,7 @@ const { ErrorHandler } = require("../utils/error");
 module.exports = (action,resource)=>{
     return (req,res,next)=>{
         try {
-            let role = req.requseter.role;
+            let role = req.requester.role;
             const isGranted = roles.can(role)[action](resource).granted;
             if (isGranted){
                 next();

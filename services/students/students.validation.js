@@ -10,3 +10,7 @@ exports.signin = Joi.object({
     phone_number: Joi.string().required(),
     password:Joi.string().required()
 });
+
+exports.refresh_token = Joi.object({
+    refresh_token: Joi.string().required(),
+});

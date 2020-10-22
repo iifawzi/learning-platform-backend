@@ -342,6 +342,146 @@
 					"body": "{\n    \"status\": false,\n    \"message\": \"You're not authenticated.\",\n    \"data\": {}\n}"
 				}
 			]
+		},
+		{
+			"name": "refresh_token",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "58c6b9e6-40a8-4270-9aa6-c3a045df9766",
+						"exec": [
+							"pm.sendRequest({",
+							"    url: pm.variables.get(\"BASE\") + \"/api/students/signup\",",
+							"    method: 'POST',",
+							"    header: {",
+							"        'content-type': 'application/json',",
+							"    },",
+							"    body: {",
+							"        mode: 'raw',",
+							"        raw: JSON.stringify({",
+							"            \"student_name\": \"Fawzi\",",
+							"            \"phone_number\": \"01090243795\",",
+							"            \"password\": \"12qwaszx\",",
+							"        })",
+							"    }",
+							"}, function (err, res) {",
+							"    pm.environment.set(\"token\", res.json().data.token);",
+							"    pm.environment.set(\"refresh_token\", res.json().data.refresh_token);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh_token\": \"{{refresh_token}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE}}/api/students/refresh_token",
+					"host": [
+						"{{BASE}}"
+					],
+					"path": [
+						"api",
+						"students",
+						"refresh_token"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "refresh_token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/students/refresh_token",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"students",
+								"refresh_token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "304"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"130-q9nKF66t94sJDqWWYJwtJ2MoPXU\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 Oct 2020 01:19:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"authorization\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50X2lkIjoxMCwic3R1ZGVudF9uYW1lIjoiRmF3emkiLCJwaG9uZV9udW1iZXIiOiIwMTA5MDI0Mzc5NSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNjAzMzI5NTc3LCJleHAiOjE2MDM0MTU5Nzd9.lmDikC_GOIA9AHT_Vy-8w0WGP9OYb8gdzNnTDLEGyhk\"\n    }\n}"
+				}
+			]
 		}
 	],
 	"auth": {
@@ -371,7 +511,7 @@
 	],
 	"variable": [
 		{
-			"id": "ec085c3b-83cc-4a3f-bf75-3f1ccb8457cd",
+			"id": "4b20d05e-3b7b-4f4b-a71a-ea85baa2e82f",
 			"key": "BASE",
 			"value": "localhost:5000"
 		}
