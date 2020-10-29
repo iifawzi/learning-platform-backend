@@ -1,5 +1,6 @@
 const roles = require("../startup/accessControl");
 const { ErrorHandler } = require("../utils/error");
+const errors = require("../utils/errors");
 
 module.exports = (action,resource)=>{
     return (req,res,next)=>{
@@ -9,7 +10,7 @@ module.exports = (action,resource)=>{
             if (isGranted){
                 next();
             }else {
-                throw new ErrorHandler(403,"Not Authorized");
+                throw new ErrorHandler(403,errors.NOT_AUTHORIZED);
             }
         }catch(err){
             next(err);
