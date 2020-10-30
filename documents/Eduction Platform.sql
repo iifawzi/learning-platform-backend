@@ -12,7 +12,9 @@ CREATE TABLE `students` (
 CREATE TABLE `groups` (
   `group_id` int PRIMARY KEY AUTO_INCREMENT,
   `group_name` varchar(255),
-  `main_group` boolean
+  `main_group` boolean,
+  `group_code` int,
+  `join_using` ENUM ('code', 'request')
 );
 
 CREATE TABLE `students_groups` (
