@@ -68,7 +68,7 @@ describe("/students", () => {
             const token = createToken(student_token(1, "Fawzi E. Abdulfattah", "02098348590")); // a token with a number not registered to use in the request
             let res = await request(server)
                 .post("/api/students/refresh_token")
-                .set({ authorization: token })
+                .set({authorization: "Bearer " + token})
                 .send({
                     "refresh_token": "anystringherewillnotmatter",
                 });

@@ -10,10 +10,10 @@ module.exports = (action,resource)=>{
             if (isGranted){
                 next();
             }else {
-                throw new ErrorHandler(403,errors.NOT_AUTHORIZED);
+                throw new ErrorHandler(403,errors.GRANTED_NOT_AUTHORIZED);
             }
         }catch(err){
-            next(err);
+            throw new ErrorHandler(403,errors.GRANTED_NOT_AUTHORIZED);
         };
     }
 

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
+    "startTest": "NODE_ENV=test nodemon server.js",
     "test": "NODE_ENV=test mocha \"./{,!(node_modules)/**/}*.test.js\" --exit"
   },
   "repository": {
