@@ -13,7 +13,6 @@ try {
     // get group's info from body
     const group_info = req.body;
     // put the creator id in the group's info
-    console.log(req.requester.teacher_id);
     group_info.teacher_id = req.requester.teacher_id;
     // add a code to the group: 
     group_info.group_code = getUniqueId();
