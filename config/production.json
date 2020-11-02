@@ -18,5 +18,11 @@
     "depends": {
       "subscription_end_after_month": 1,
       "student_account_status_by_default": false
+    },
+    "principle": {
+      "name": "Fawzi E. Abdulfattah", 
+      "password": "12qwaszx", 
+      "phone_number": "01090243795", 
+      "role": "principle"
     }
 }

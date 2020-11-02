@@ -9,7 +9,9 @@ ac.grant('student')
 // principle perms: 
 ac.grant('principle')
     // teachers apis: 
-    .create("teachers");
+    .create("teachers")
+    // groups apis: 
+    .create("groups")
     
 
 
