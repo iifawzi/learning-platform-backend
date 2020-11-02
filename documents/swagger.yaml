@@ -10,9 +10,53 @@ basePath: "/api"
 tags:
 - name: "students"
   description: "Everything about students"
+- name: "teachers"
+  description: "Everything about teachers"
 schemes:
 - "http"
 paths:
+  /teachers/create:
+    post:
+      tags:
+      - "teachers"
+      summary: "to create a new teacher"
+      description: "This api is used to create a new teacher"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "the info need to create new teacher"
+        required: true
+        schema:
+          $ref: "#/definitions/create_teacher_body"
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "201":
+          description: 200 (Success)
+          schema:
+            $ref: '#/definitions/create_teacher_response'
+        '400':
+          description: 400 (Bad Request - input is incorrect or missing)
+          schema:
+            $ref: '#/definitions/error_400'
+        '401':
+          description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
+          schema:
+            $ref: '#/definitions/error_401'
+        '403':
+          description: 403 (Forbidden - Not Authorized)
+          schema:
+            $ref: '#/definitions/error_403'
+        '409':
+          description: 409 (CONFLICT - Resource already registered)
+          schema:
+            $ref: '#/definitions/error_409'
   /students/refresh_token:
     post:
       tags:
@@ -47,6 +91,10 @@ paths:
           description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
           schema:
             $ref: '#/definitions/error_401'
+        '403':
+          description: 403 (Forbidden - Not Authorized)
+          schema:
+            $ref: '#/definitions/error_403'
         '404':
           description: 404 (Account is not found)
           schema:
@@ -112,6 +160,49 @@ paths:
           schema:
             $ref: '#/definitions/error_401'
 definitions:
+  create_teacher_body:
+    type: "object"
+    properties:
+      teacher_name:
+        type: "string"
+      teacher_phone_number:
+        type: "string"
+      password:
+        type: "string"
+      teacher_role:
+        type: "string"
+    example:
+      teacher_name: Fawzi E. Abdulfattah
+      teacher_phone_number: 01090243795
+      teacher_pasword: 12qwaszx
+      teacher_role: principle
+  create_teacher_response:
+    type: "object"
+    properties:
+      teacher_name:
+        type: "string"
+      teacher_phone_number:
+        type: "string"
+      password:
+        type: "string"
+      teacher_role:
+        type: "string"
+      refresh_token:
+        type: "string"
+      token:
+        type: "string"
+    example:
+      status: true
+      message: success
+      data:
+        teacher_id: 1
+        teacher_name: Fawzi E. Abdulfattah
+        teacher_phone_number: 01090243795
+        teacher_role: principle
+        teacher_refresh_token: 65ba2902eaa8df8594b5c532dc0eacb3
+        updatedAt: '2020-11-02T00:11:02.821Z'
+        createdAt: '2020-11-02T00:11:02.821Z'
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJGYXd6aSBFLiBBYmR1bGZhdHRhaCIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InByaW5jaXBsZSIsImlhdCI6MTYwNDI3NTg2MiwiZXhwIjoxNjA0MzYyMjYyfQ.3rbYYS6_HKoEcogNkAct48eLph0N1ACOms4gRS4AQC0
   refresh_token_body:
     type: "object"
     properties:

@@ -10,11 +10,13 @@ CREATE TABLE `students` (
 );
 
 CREATE TABLE `groups` (
-  `group_id` int PRIMARY KEY AUTO_INCREMENT,
+  `group_id` int AUTO_INCREMENT,
+  `teacher_id` int AUTO_INCREMENT,
   `group_name` varchar(255),
-  `main_group` boolean,
+  `group_description` varchar(255),
   `group_code` int,
-  `join_using` ENUM ('code', 'request')
+  `join_using` ENUM ('code', 'request'),
+  PRIMARY KEY (`group_id`, `teacher_id`)
 );
 
 CREATE TABLE `students_groups` (
@@ -84,11 +86,10 @@ CREATE TABLE `answers` (
 CREATE TABLE `teachers` (
   `teacher_id` int PRIMARY KEY AUTO_INCREMENT,
   `teacher_name` varchar(255),
-  `phone_number` varchar(255),
-  `username` varchar(255),
+  `teacher_phone_number` varchar(255),
   `password` varchar(255),
-  `refresh_token` varchar(255),
-  `role` ENUM ('principle', 'teacher')
+  `teacher_refresh_token` varchar(255),
+  `teacher_role` ENUM ('principle', 'teacher')
 );
 
 CREATE TABLE `teachers_groups` (
@@ -140,6 +141,8 @@ ALTER TABLE `students_groups` ADD FOREIGN KEY (`student_id`) REFERENCES `student
 
 ALTER TABLE `students_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
 
+ALTER TABLE `groups` ADD FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`);
+
 ALTER TABLE `announcements_groups` ADD FOREIGN KEY (`announcement_id`) REFERENCES `announcements` (`announcement_id`);
 
 ALTER TABLE `announcements_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
@@ -181,3 +184,4 @@ ALTER TABLE `serieses_videos` ADD FOREIGN KEY (`video_id`) REFERENCES `videos` (
 ALTER TABLE `students_videos` ADD FOREIGN KEY (`video_id`) REFERENCES `videos` (`video_id`);
 
 ALTER TABLE `students_videos` ADD FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`);
+
