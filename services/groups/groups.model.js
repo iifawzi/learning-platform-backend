@@ -24,7 +24,7 @@ module.exports = db.define("groups", {
         allowNull: false
     },
     group_code: {
-        type: Sequelize.STRING,
+        type: Sequelize.CHAR(9),
         allowNull: false,
         unique: true
     },
