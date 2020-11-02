@@ -21,7 +21,7 @@ module.exports = db.define("teachers", {
         allowNull: false,
     },
     teacher_refresh_token: {
-        type: Sequelize.STRING,
+        type: Sequelize.CHAR(32),
         allowNull: false,
     },
     teacher_role: {

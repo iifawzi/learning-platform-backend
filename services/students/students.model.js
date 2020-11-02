@@ -30,7 +30,7 @@ module.exports = db.define("students", {
         allowNull: false,
     },
     refresh_token: {
-        type: Sequelize.STRING,
+        type: Sequelize.CHAR(32),
         allowNull: false,
     }
 }, {
