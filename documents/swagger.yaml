@@ -12,9 +12,49 @@ tags:
   description: "Everything about students"
 - name: "teachers"
   description: "Everything about teachers"
+- name: "groups"
+  description: "Everything about groups"
 schemes:
 - "http"
 paths:
+  /groups/create:
+    post:
+      tags:
+      - "groups"
+      summary: "to create a new group"
+      description: "This api is used to create a new group"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "the info need to create new group"
+        required: true
+        schema:
+          $ref: "#/definitions/create_group_body"
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "201":
+          description: 201 (Created)
+          schema:
+            $ref: '#/definitions/create_group_response'
+        '400':
+          description: 400 (Bad Request - input is incorrect or missing)
+          schema:
+            $ref: '#/definitions/error_400'
+        '401':
+          description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
+          schema:
+            $ref: '#/definitions/error_401'
+        '403':
+          description: 403 (Forbidden - Not Authorized)
+          schema:
+            $ref: '#/definitions/error_403'
   /teachers/create:
     post:
       tags:
@@ -38,7 +78,7 @@ paths:
         type: "string"
       responses:
         "201":
-          description: 200 (Success)
+          description: 201 (Created)
           schema:
             $ref: '#/definitions/create_teacher_response'
         '400':
@@ -160,6 +200,44 @@ paths:
           schema:
             $ref: '#/definitions/error_401'
 definitions:
+  create_group_body:
+    type: "object"
+    properties:
+      group_name:
+        type: "string"
+      group_description:
+        type: "string"
+      join_using:
+        type: "string"
+    example:
+      group_name: Math 001
+      group_description: 'Math''s Group, the best one ever.'
+      join_using: code
+  create_group_response:
+    type: "object"
+    properties:
+      group_id:
+        type: "integer"
+      group_name:
+        type: "string"
+      group_description:
+        type: "string"
+      join_using:
+        type: "string"
+      teacher_id:
+        type: "integer"
+    example:
+      status: true
+      message: success
+      data:
+        group_id: 4
+        group_name: Math 001
+        group_description: 'Math''s Group, the best one ever.'
+        join_using: code
+        teacher_id: 1
+        group_code: uhizknok8
+        updatedAt: '2020-11-02T02:50:14.350Z'
+        createdAt: '2020-11-02T02:50:14.350Z'
   create_teacher_body:
     type: "object"
     properties:

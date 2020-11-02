@@ -605,6 +605,123 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJmYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InByaW5jaXBsZSIsImlhdCI6MTYwNDI4NTMwMCwiZXhwIjoxNjA0MzcxNzAwfQ.fA7TXdDTxTqMO3oYmflQKTmQgqa-ZzdugxGlioULVUY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"group_name\":\"Math 001\",\n    \"group_description\":\"Math's Group, the best one ever.\",\n    \"join_using\": \"code\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/groups/create",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"groups",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJmYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InByaW5jaXBsZSIsImlhdCI6MTYwNDI4NTMwMCwiZXhwIjoxNjA0MzcxNzAwfQ.fA7TXdDTxTqMO3oYmflQKTmQgqa-ZzdugxGlioULVUY"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"group_name\":\"Math 001\",\n    \"group_description\":\"Math's Group, the best one ever.\",\n    \"join_using\": \"code\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE}}/api/groups/create",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"api",
+										"groups",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"112-42WmA4UaawQ/8KhJo7OrzsoXj4k\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 02 Nov 2020 02:50:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"group_id\": 4,\n        \"group_name\": \"Math 001\",\n        \"group_description\": \"Math's Group, the best one ever.\",\n        \"join_using\": \"code\",\n        \"teacher_id\": 1,\n        \"group_code\": \"uhizknok8\",\n        \"updatedAt\": \"2020-11-02T02:50:14.350Z\",\n        \"createdAt\": \"2020-11-02T02:50:14.350Z\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -634,7 +751,7 @@
 	],
 	"variable": [
 		{
-			"id": "bee8a917-3439-4fec-9051-c486d1d80969",
+			"id": "a1189926-174f-4dc4-ae77-3a60e892106d",
 			"key": "BASE",
 			"value": "localhost:5000"
 		}
