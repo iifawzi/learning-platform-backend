@@ -36,3 +36,30 @@ try {
     next(err);
 };
 };
+
+
+
+
+exports.signin = async (req,res,next)=>{
+    try {
+        const teacher_info = req.body;
+        // Check if the account exists and return the password to compare:
+        const isExist = await teachersServices.getTeacher(teacher_info.teacher_phone_number, ["password","teacher_id","teacher_phone_number","teacher_name","teacher_refresh_token"]);
+        if (!isExist){
+            throw new ErrorHandler(401,errors.NOT_AUTHENTICATED);
+        }
+        // check if the passwoed is correct:
+        const isCorrectPassword = await comparePassword(teacher_info.password,isExist.password);
+        if(!isCorrectPassword){
+            throw new ErrorHandler(401,errors.NOT_AUTHENTICATED);
+        }
+        // generate a token: 
+        const token = createToken(tokens.teacher_token(isExist.teacher_id,isExist.teacher_name,isExist.teacher_phone_number,isExist.teacher_role));
+        // delete password and send the response: 
+        delete isExist.password;
+        // send the response:
+        return respondWith(true,200,{...isExist, token},res);
+    }catch(err){
+        next(err);
+    }
+    };

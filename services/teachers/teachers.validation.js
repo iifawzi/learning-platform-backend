@@ -7,3 +7,7 @@ exports.create = Joi.object({
     teacher_role: Joi.string().valid("teacher", "principle").required(),
 });
 
+exports.signin = Joi.object({
+    teacher_phone_number: Joi.string().required(),
+    password:Joi.string().required()
+});

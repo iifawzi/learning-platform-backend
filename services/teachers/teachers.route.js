@@ -9,4 +9,5 @@ const granted = require("../../middlewares/granted");
 const isAuth = require("../../middlewares/is-auth");
 // Routes: 
 router.post("/create",isAuth(),granted("create","teachers"),validateSchema(teachersSchema.create,'body'),teachersController.create);
+router.post("/signin",validateSchema(teachersSchema.signin,'body'),teachersController.signin);
 module.exports = router;
