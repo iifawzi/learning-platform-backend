@@ -118,6 +118,237 @@
 							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"teacher_id\": 1,\n        \"teacher_name\": \"Fawzi E. Abdulfattah\",\n        \"teacher_phone_number\": \"01090243795\",\n        \"teacher_role\": \"principle\",\n        \"teacher_refresh_token\": \"65ba2902eaa8df8594b5c532dc0eacb3\",\n        \"updatedAt\": \"2020-11-02T00:11:02.821Z\",\n        \"createdAt\": \"2020-11-02T00:11:02.821Z\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJGYXd6aSBFLiBBYmR1bGZhdHRhaCIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InByaW5jaXBsZSIsImlhdCI6MTYwNDI3NTg2MiwiZXhwIjoxNjA0MzYyMjYyfQ.3rbYYS6_HKoEcogNkAct48eLph0N1ACOms4gRS4AQC0\"\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"teacher_phone_number\": \"01090243795\",\n    \"password\": \"12qwaszx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/teachers/signin",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"signin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "signin - account not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone_number\": \"01090243795\",\n    \"password\": \"12qwaszx\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE}}/api/teachers/signin",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"api",
+										"teachers",
+										"signin"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40-LoTBjyAvBzqACuJsFGnOSKREC24\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 18 Oct 2020 13:36:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": false,\n    \"message\": \"You're not authenticated.\",\n    \"data\": {}\n}"
+						},
+						{
+							"name": "signin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"teacher_phone_number\": \"01090243795\",\n    \"password\": \"12qwaszx\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE}}/api/teachers/signin",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"api",
+										"teachers",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "464"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d0-gDxObZAH04D3EUvan9DtCkYV23Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 05 Nov 2020 08:58:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"teacher_id\": 1,\n        \"teacher_phone_number\": \"01090243795\",\n        \"teacher_name\": \"Fawzi E. Abdulfattah\",\n        \"teacher_refresh_token\": \"7c3a91193adb19db3bf0da4da2b79d15\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJGYXd6aSBFLiBBYmR1bGZhdHRhaCIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InRlYWNoZXIiLCJpYXQiOjE2MDQ1NjY3MTUsImV4cCI6MTYwNDY1MzExNX0.fjsEMgmrSaXiNaTrPTowXiFHvMu3fR2KheCFtavS0mA\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh_token",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ef34923b-3003-4dd5-97ea-1354d7b3acdf",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.variables.get(\"BASE\") + \"/api/teachers/signin\",",
+									"    method: 'POST',",
+									"    header: {",
+									"        'content-type': 'application/json',",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify({",
+									"            \"teacher_phone_number\": \"01090243795\",",
+									"            \"password\": \"12qwaszx\"",
+									"        })",
+									"    }",
+									"}, function (err, res) {",
+									"    pm.environment.set(\"token\", res.json().data.token);",
+									"    pm.environment.set(\"teacher_refresh_token\", res.json().data.teacher_refresh_token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"type": "text",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"teacher_refresh_token\": \"{{teacher_refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/teachers/refresh_token",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"teachers",
+								"refresh_token"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -751,7 +982,7 @@
 	],
 	"variable": [
 		{
-			"id": "a1189926-174f-4dc4-ae77-3a60e892106d",
+			"id": "4f83064d-1ec1-49fa-9d14-57b22d4f695d",
 			"key": "BASE",
 			"value": "localhost:5000"
 		}

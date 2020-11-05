@@ -10,4 +10,6 @@ const isAuth = require("../../middlewares/is-auth");
 // Routes: 
 router.post("/create",isAuth(),granted("create","teachers"),validateSchema(teachersSchema.create,'body'),teachersController.create);
 router.post("/signin",validateSchema(teachersSchema.signin,'body'),teachersController.signin);
+router.post("/refresh_token",isAuth(),granted("updateOwn","token"),validateSchema(teachersSchema.refresh_token,'body'),teachersController.refresh_token);
+
 module.exports = router;

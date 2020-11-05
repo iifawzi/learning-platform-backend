@@ -11,3 +11,7 @@ exports.signin = Joi.object({
     teacher_phone_number: Joi.string().required(),
     password:Joi.string().required()
 });
+
+exports.refresh_token = Joi.object({
+    teacher_refresh_token: Joi.string().required(),
+});

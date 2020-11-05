@@ -44,7 +44,7 @@ exports.signin = async (req,res,next)=>{
     try {
         const teacher_info = req.body;
         // Check if the account exists and return the password to compare:
-        const isExist = await teachersServices.getTeacher(teacher_info.teacher_phone_number, ["password","teacher_id","teacher_phone_number","teacher_name","teacher_refresh_token"]);
+        const isExist = await teachersServices.getTeacher(teacher_info.teacher_phone_number, ["password","teacher_id","teacher_phone_number","teacher_name","teacher_refresh_token","teacher_role"]);
         if (!isExist){
             throw new ErrorHandler(401,errors.NOT_AUTHENTICATED);
         }
@@ -62,4 +62,30 @@ exports.signin = async (req,res,next)=>{
     }catch(err){
         next(err);
     }
+    };
+
+
+
+
+    exports.refresh_token = async (req,res,next)=>{
+        try {
+            const requester = req.requester;
+            const refresh_token = req.body.teacher_refresh_token;
+            // get the teacher's refresh_token using his phone number: 
+            const teacher_info = await teachersServices.getTeacher(requester.teacher_phone_number, ["teacher_refresh_token","teacher_id"]);
+            // if the teacher's not exists: 
+            if (!teacher_info){
+                throw new ErrorHandler(404,errors.NOT_FOUND);
+            };
+            // get the teacher's refresh_token using his phone number: 
+            if (teacher_info.teacher_refresh_token !== refresh_token){
+                throw new ErrorHandler(401,errors.NOT_AUTHENTICATED);
+            };
+            // make a new token:  
+            const token = createToken(tokens.teacher_token(requester.teacher_id,requester.teacher_name,requester.teacher_phone_number,requester.teacher_role));
+            // return the new token: 
+            return respondWith(true,200,{authorization:token}, res);
+        }catch(err){
+            next(err);
+        }
     };

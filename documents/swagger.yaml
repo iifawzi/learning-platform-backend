@@ -17,6 +17,78 @@ tags:
 schemes:
 - "http"
 paths:
+  /teachers/refresh_token:
+    post:
+      tags:
+      - "teachers"
+      summary: "to get a new token for the teacher"
+      description: "This api is used to get a new token"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "refresh_token that will be used to issue a new token"
+        required: true
+        schema:
+          $ref: "#/definitions/teacher_refresh_token_body"
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: 200 (Success)
+          schema:
+            $ref: '#/definitions/teacher_refresh_token_response'
+        '400':
+          description: 400 (Bad Request - input is incorrect or missing)
+          schema:
+            $ref: '#/definitions/error_400'
+        '401':
+          description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
+          schema:
+            $ref: '#/definitions/error_401'
+        '403':
+          description: 403 (Forbidden - Not Authorized)
+          schema:
+            $ref: '#/definitions/error_403'
+        '404':
+          description: 404 (Account is not found)
+          schema:
+            $ref: '#/definitions/error_404'
+  /teacher/signin:
+    post:
+      tags:
+      - "teachers"
+      summary: "signin a teacher"
+      description: "This api is used to signin a tacher"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "teacher Info's object used to signin"
+        required: true
+        schema:
+          $ref: "#/definitions/signin_teacher_body"
+      responses:
+        "200":
+          description: 200 (login Successfully)
+          schema:
+            $ref: '#/definitions/signin_teacher_response'
+        '400':
+          description: 400 (Bad Request - input is incorrect or missing)
+          schema:
+            $ref: '#/definitions/error_400'
+        '401':
+          description: 401 (Not Authenticated - wrong phone_number or password)
+          schema:
+            $ref: '#/definitions/error_401'
   /groups/create:
     post:
       tags:
@@ -200,6 +272,52 @@ paths:
           schema:
             $ref: '#/definitions/error_401'
 definitions:
+  teacher_refresh_token_body:
+    type: "object"
+    properties:
+      teacher_refresh_token:
+        type: "string"
+    example:
+      teacher_refresh_token: "7a92299daf865ace374e999c2fe02234"
+  teacher_refresh_token_response:
+    type: "object"
+    properties:
+      token:
+        type: "string"
+    example:
+      authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdHVkZW50X2lkIjoxLCJzdHVkZW50X25hbWUiOiJGYXd6aSIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE2MDMwNTgwODksImV4cCI6MTYwMzE0NDQ4OX0.rzuImCu26vMTEu82DKlHdqGYyWwHnj2O4_J6oSz6kS0"
+  signin_teacher_body:
+    type: "object"
+    properties:
+      teacher_phone_number:
+        type: "string"
+      password:
+        type: "string"
+    example:
+      phone_number: "01090243795"
+      password: "12qwaszx"
+  signin_teacher_response:
+    type: "object"
+    properties:
+      teacher_name:
+        type: "string"
+      tacher_phone_number:
+        type: "string"
+      teacher_id:
+        type: "integer"
+      teacher_refresh_token:
+        type: "string"
+      token:
+        type: "string"
+    example: 
+      status: true
+      message: success
+      data:
+        teacher_id: 1
+        teacher_phone_number: 01090243795
+        teacher_name: Fawzi E. Abdulfattah
+        teacher_refresh_token: 7c3a91193adb19db3bf0da4da2b79d15
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJGYXd6aSBFLiBBYmR1bGZhdHRhaCIsInBob25lX251bWJlciI6IjAxMDkwMjQzNzk1Iiwicm9sZSI6InRlYWNoZXIiLCJpYXQiOjE2MDQ1NjY3MTUsImV4cCI6MTYwNDY1MzExNX0.fjsEMgmrSaXiNaTrPTowXiFHvMu3fR2KheCFtavS0mA
   create_group_body:
     type: "object"
     properties:

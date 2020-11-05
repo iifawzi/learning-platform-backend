@@ -12,6 +12,8 @@ ac.grant('principle')
     .create("teachers")
     // groups apis: 
     .create("groups")
+    // tokens: 
+    .updateOwn("token")
     
 
 
