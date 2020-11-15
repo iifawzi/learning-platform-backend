@@ -10,8 +10,9 @@ ac.grant('student')
 ac.grant('principle')
     // teachers apis: 
     .create("teachers")
-    // groups apis: 
-    .create("groups")
+    // classes apis: 
+    .create("classes")
+    .readOwn("classes")
     // tokens: 
     .updateOwn("token")
     

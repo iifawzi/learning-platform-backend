@@ -1,13 +1,13 @@
 const {db} = require("../../startup/db");
 const Sequelize = require("sequelize");
 
-module.exports = db.define("groups", {
-    group_id: {
+module.exports = db.define("classes", {
+    class_id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-    teacher_id: {
+    creator_teacher_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -15,15 +15,15 @@ module.exports = db.define("groups", {
             key: "teacher_id"
         }
     },
-    group_name: {
+    class_name: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    group_description: {
+    class_description: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    group_code: {
+    class_code: {
         type: Sequelize.CHAR(9),
         allowNull: false,
         unique: true

@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const { studentsRoutes } = require("../services/students");
 const { teachersRoutes } = require("../services/teachers");
-const { groupsRoutes } = require("../services/groups");
+const { classesRoutes } = require("../services/classes");
+const  teachers_classes_model = require("../services/teachers_classes"); // TODO:: to be deleted when adding routes 
 const router = Router()
 
 // Test Route: 
@@ -12,7 +13,7 @@ router.get("/test",(req, res) => {
 // Routes Config: 
 router.use("/students",studentsRoutes);
 router.use("/teachers",teachersRoutes);
-router.use("/groups",groupsRoutes)
+router.use("/classes",classesRoutes)
 
 
 module.exports = router;
