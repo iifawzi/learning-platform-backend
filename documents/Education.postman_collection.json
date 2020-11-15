@@ -838,7 +838,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "groups",
+			"name": "classes",
 			"item": [
 				{
 					"name": "create",
@@ -853,7 +853,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"group_name\":\"Math 001\",\n    \"group_description\":\"Math's Group, the best one ever.\",\n    \"join_using\": \"code\"\n}",
+							"raw": "{\n    \"class_name\":\"Math 001\",\n    \"class_description\":\"Math's class, the best one ever.\",\n    \"join_using\": \"code\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -861,13 +861,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE}}/api/groups/create",
+							"raw": "{{BASE}}/api/classes/create",
 							"host": [
 								"{{BASE}}"
 							],
 							"path": [
 								"api",
-								"groups",
+								"classes",
 								"create"
 							]
 						}
@@ -886,7 +886,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"group_name\":\"Math 001\",\n    \"group_description\":\"Math's Group, the best one ever.\",\n    \"join_using\": \"code\"\n}",
+									"raw": "{\n    \"class_name\":\"Math 001\",\n    \"class_description\":\"Math's class, the best one ever.\",\n    \"join_using\": \"code\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -894,13 +894,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{BASE}}/api/groups/create",
+									"raw": "{{BASE}}/api/classes/create",
 									"host": [
 										"{{BASE}}"
 									],
 									"path": [
 										"api",
-										"groups",
+										"classes",
 										"create"
 									]
 								}
@@ -947,7 +947,100 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"group_id\": 4,\n        \"group_name\": \"Math 001\",\n        \"group_description\": \"Math's Group, the best one ever.\",\n        \"join_using\": \"code\",\n        \"teacher_id\": 1,\n        \"group_code\": \"uhizknok8\",\n        \"updatedAt\": \"2020-11-02T02:50:14.350Z\",\n        \"createdAt\": \"2020-11-02T02:50:14.350Z\"\n    }\n}"
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"class_id\": 4,\n        \"class_name\": \"Math 001\",\n        \"class_description\": \"Math's class, the best one ever.\",\n        \"join_using\": \"code\",\n        \"teacher_id\": 1,\n        \"class_code\": \"uhizknok8\",\n        \"updatedAt\": \"2020-11-02T02:50:14.350Z\",\n        \"createdAt\": \"2020-11-02T02:50:14.350Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJmYXd6aSIsInRlYWNoZXJfcGhvbmVfbnVtYmVyIjoiMDEwOTAyNDM3OTUiLCJyb2xlIjoicHJpbmNpcGxlIiwiaWF0IjoxNjA1NDgyMDc1LCJleHAiOjE2MDU1Njg0NzV9.9-8Xcy8Gjwm8WrAiMDCGpNa3Clf84itu2gxhr_fx3VU"
+							}
+						],
+						"url": {
+							"raw": "{{BASE}}/api/classes/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJmYXd6aSIsInRlYWNoZXJfcGhvbmVfbnVtYmVyIjoiMDEwOTAyNDM3OTUiLCJyb2xlIjoicHJpbmNpcGxlIiwiaWF0IjoxNjA1NDgyMDc1LCJleHAiOjE2MDU1Njg0NzV9.9-8Xcy8Gjwm8WrAiMDCGpNa3Clf84itu2gxhr_fx3VU"
+									}
+								],
+								"url": {
+									"raw": "{{BASE}}/api/classes/",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"api",
+										"classes",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"478-06d/REk7YH2g6trcuwJl1lKIBW8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 15 Nov 2020 23:15:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"class_id\": 2,\n            \"class_name\": \"Math 001\",\n            \"class_description\": \"The best class in the world, which is awesome really!\",\n            \"class_code\": \"zocj4lei4\",\n            \"join_using\": \"code\",\n            \"creator_teacher_id\": 1\n        },\n        {\n            \"class_id\": 4,\n            \"class_name\": \"Arabic 2\",\n            \"class_description\": \"The best class in the world, which is awesome really!\",\n            \"class_code\": \"i2u8yni5n\",\n            \"join_using\": \"code\",\n            \"creator_teacher_id\": 2\n        },\n    ]\n}"
 						}
 					]
 				}
@@ -982,7 +1075,7 @@
 	],
 	"variable": [
 		{
-			"id": "4f83064d-1ec1-49fa-9d14-57b22d4f695d",
+			"id": "9f8dd0d4-9134-48ab-bfd9-c26b00077ce0",
 			"key": "BASE",
 			"value": "localhost:5000"
 		}

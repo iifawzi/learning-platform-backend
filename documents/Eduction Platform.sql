@@ -9,20 +9,20 @@ CREATE TABLE `students` (
   `refresh_token` varchar(255)
 );
 
-CREATE TABLE `groups` (
-  `group_id` int AUTO_INCREMENT,
-  `teacher_id` int AUTO_INCREMENT,
-  `group_name` varchar(255),
-  `group_description` varchar(255),
-  `group_code` int,
+CREATE TABLE `classes` (
+  `class_id` int AUTO_INCREMENT,
+  `creator_teacher_id` int AUTO_INCREMENT,
+  `class_name` varchar(255),
+  `class_description` varchar(255),
+  `class_code` int,
   `join_using` ENUM ('code', 'request'),
-  PRIMARY KEY (`group_id`, `teacher_id`)
+  PRIMARY KEY (`class_id`, `creator_teacher_id`)
 );
 
-CREATE TABLE `students_groups` (
-  `student_group_id` int PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `students_classes` (
+  `students_classes_id` int PRIMARY KEY AUTO_INCREMENT,
   `student_id` int,
-  `group_id` int
+  `class_id` int
 );
 
 CREATE TABLE `announcements` (
@@ -31,15 +31,15 @@ CREATE TABLE `announcements` (
   `announcement_content` text
 );
 
-CREATE TABLE `announcements_groups` (
-  `announcement_group_id` int,
+CREATE TABLE `announcements_classes` (
+  `announcements_classes_id` int,
   `announcement_id` int,
-  `group_id` int
+  `class_id` int
 );
 
 CREATE TABLE `exams` (
   `exam_id` int PRIMARY KEY AUTO_INCREMENT,
-  `group_id` int,
+  `class_id` int,
   `available_from` datetime,
   `available_to` datetime,
   `duration` int,
@@ -47,10 +47,10 @@ CREATE TABLE `exams` (
   `pass_mark` int
 );
 
-CREATE TABLE `exams_groups` (
-  `exam_group_id` int PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `exams_classes` (
+  `exams_classes_id` int PRIMARY KEY AUTO_INCREMENT,
   `exam_id` int,
-  `group_id` int
+  `class_id` int
 );
 
 CREATE TABLE `questions` (
@@ -92,10 +92,10 @@ CREATE TABLE `teachers` (
   `teacher_role` ENUM ('principle', 'teacher')
 );
 
-CREATE TABLE `teachers_groups` (
-  `teachers_groups_id` int PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE `teachers_classes` (
+  `teachers_classes_id` int PRIMARY KEY AUTO_INCREMENT,
   `teacher_id` int,
-  `group_id` int
+  `class_id` int
 );
 
 CREATE TABLE `videos` (
@@ -105,21 +105,15 @@ CREATE TABLE `videos` (
   `prerequisite_exam_id` int
 );
 
-CREATE TABLE `videos_groups` (
-  `video_group_id` int PRIMARY KEY AUTO_INCREMENT,
-  `video_id` int,
-  `group_id` int
-);
-
 CREATE TABLE `serieses` (
   `series_id` int PRIMARY KEY AUTO_INCREMENT,
   `serieses_name` varchar(255),
   `serieses_description` text
 );
 
-CREATE TABLE `serieses_groups` (
-  `series_group_id` int PRIMARY KEY AUTO_INCREMENT,
-  `group_id` int,
+CREATE TABLE `serieses_classes` (
+  `serieses_classes_id` int PRIMARY KEY AUTO_INCREMENT,
+  `class_id` int,
   `series_id` int
 );
 
@@ -137,19 +131,19 @@ CREATE TABLE `students_videos` (
   `watched` boolean
 );
 
-ALTER TABLE `students_groups` ADD FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`);
+ALTER TABLE `students_classes` ADD FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`);
 
-ALTER TABLE `students_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
+ALTER TABLE `students_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
-ALTER TABLE `groups` ADD FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`);
+ALTER TABLE `classes` ADD FOREIGN KEY (`creator_teacher_id`) REFERENCES `teachers` (`teacher_id`);
 
-ALTER TABLE `announcements_groups` ADD FOREIGN KEY (`announcement_id`) REFERENCES `announcements` (`announcement_id`);
+ALTER TABLE `announcements_classes` ADD FOREIGN KEY (`announcement_id`) REFERENCES `announcements` (`announcement_id`);
 
-ALTER TABLE `announcements_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
+ALTER TABLE `announcements_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
-ALTER TABLE `exams_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
+ALTER TABLE `exams_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
-ALTER TABLE `exams_groups` ADD FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`);
+ALTER TABLE `exams_classes` ADD FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`);
 
 ALTER TABLE `questions` ADD FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`);
 
@@ -161,21 +155,17 @@ ALTER TABLE `answers` ADD FOREIGN KEY (`taken_exam_id`) REFERENCES `taken_exams`
 
 ALTER TABLE `answers` ADD FOREIGN KEY (`question_id`) REFERENCES `questions` (`question_id`);
 
-ALTER TABLE `teachers_groups` ADD FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`);
+ALTER TABLE `teachers_classes` ADD FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`);
 
-ALTER TABLE `teachers_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
+ALTER TABLE `teachers_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
 ALTER TABLE `videos` ADD FOREIGN KEY (`confirmation_exam_id`) REFERENCES `exams` (`exam_id`);
 
 ALTER TABLE `videos` ADD FOREIGN KEY (`prerequisite_exam_id`) REFERENCES `exams` (`exam_id`);
 
-ALTER TABLE `videos_groups` ADD FOREIGN KEY (`video_id`) REFERENCES `videos` (`video_id`);
+ALTER TABLE `serieses_classes` ADD FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`);
 
-ALTER TABLE `videos_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
-
-ALTER TABLE `serieses_groups` ADD FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
-
-ALTER TABLE `serieses_groups` ADD FOREIGN KEY (`series_id`) REFERENCES `serieses` (`series_id`);
+ALTER TABLE `serieses_classes` ADD FOREIGN KEY (`series_id`) REFERENCES `serieses` (`series_id`);
 
 ALTER TABLE `serieses_videos` ADD FOREIGN KEY (`series_id`) REFERENCES `serieses` (`series_id`);
 
