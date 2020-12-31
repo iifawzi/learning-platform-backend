@@ -18,6 +18,40 @@ schemes:
 - "http"
 paths:
   /classes/:
+    delete:
+      tags:
+      - "classes"
+      summary: "delete a specific teacher's class"
+      description: "This api is used to delete a specific class"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "authorization"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "info needed to delete a class of specific teacher"
+        required: true
+        schema:
+          $ref: "#/definitions/delete_class_body"
+      responses:
+        "200":
+          description: 200 (login Successfully)
+          schema:
+            $ref: '#/definitions/delete_class_response'
+        '401':
+          description: 401 (Not Authenticated)
+          schema:
+            $ref: '#/definitions/error_401'
+        '403':
+          description: 403 (Forbidden - Not Authorized)
+          schema:
+            $ref: '#/definitions/error_403'
+  /classes:
     get:
       tags:
       - "classes"
@@ -38,7 +72,7 @@ paths:
           schema:
             $ref: '#/definitions/get_classes_response'
         '401':
-          description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
+          description: 401 (Not Authenticated)
           schema:
             $ref: '#/definitions/error_401'
         '403':
@@ -148,7 +182,7 @@ paths:
           schema:
             $ref: '#/definitions/error_400'
         '401':
-          description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
+          description: 401 (Not Authenticated)
           schema:
             $ref: '#/definitions/error_401'
         '403':
@@ -186,7 +220,7 @@ paths:
           schema:
             $ref: '#/definitions/error_400'
         '401':
-          description: 401 (Not Authenticated - either the token is invalid, or refresh_token is incorrect)
+          description: 401 (Not Authenticated)
           schema:
             $ref: '#/definitions/error_401'
         '403':
@@ -300,6 +334,25 @@ paths:
           schema:
             $ref: '#/definitions/error_401'
 definitions:
+  delete_class_body:
+    type: "object"
+    properties:
+      class_id:
+        type: "integer"
+    example:
+      status: true
+      message: success
+      data:
+        class_id: 2
+  delete_class_response:
+    type: "object"
+    properties:
+      class_id:
+        type: "integer"
+    example:
+      status: true
+      message: success
+      data: 1
   get_classes_response:
     type: "object"
     properties:

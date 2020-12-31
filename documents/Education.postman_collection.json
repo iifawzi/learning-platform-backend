@@ -1043,6 +1043,117 @@
 							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"class_id\": 2,\n            \"class_name\": \"Math 001\",\n            \"class_description\": \"The best class in the world, which is awesome really!\",\n            \"class_code\": \"zocj4lei4\",\n            \"join_using\": \"code\",\n            \"creator_teacher_id\": 1\n        },\n        {\n            \"class_id\": 4,\n            \"class_name\": \"Arabic 2\",\n            \"class_description\": \"The best class in the world, which is awesome really!\",\n            \"class_code\": \"i2u8yni5n\",\n            \"join_using\": \"code\",\n            \"creator_teacher_id\": 2\n        },\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJGYXd6aSBFLiBBYmR1bGZhdHRhaCIsInRlYWNoZXJfcGhvbmVfbnVtYmVyIjoiMDEwOTAyNDM3OTUiLCJyb2xlIjoicHJpbmNpcGxlIiwiaWF0IjoxNjA5NDM5MDAxLCJleHAiOjE2MDk1MjU0MDF9.5upjZXoIKUHiT94UlurlwKArqzGPj_DkUOiTiYsYSR8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"class_id\": 34984873\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/api/classes/",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"api",
+								"classes",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFjaGVyX2lkIjoxLCJ0ZWFjaGVyX25hbWUiOiJGYXd6aSBFLiBBYmR1bGZhdHRhaCIsInRlYWNoZXJfcGhvbmVfbnVtYmVyIjoiMDEwOTAyNDM3OTUiLCJyb2xlIjoicHJpbmNpcGxlIiwiaWF0IjoxNjA5NDM5MDAxLCJleHAiOjE2MDk1MjU0MDF9.5upjZXoIKUHiT94UlurlwKArqzGPj_DkUOiTiYsYSR8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"class_id\": 18\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE}}/api/classes/",
+									"host": [
+										"{{BASE}}"
+									],
+									"path": [
+										"api",
+										"classes",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Authorization"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-3lp5AjKBkkR4SnmPVptFLFMX7lg\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 31 Dec 2020 18:24:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": 1\n}"
+						}
+					]
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1075,7 +1186,7 @@
 	],
 	"variable": [
 		{
-			"id": "9f8dd0d4-9134-48ab-bfd9-c26b00077ce0",
+			"id": "987457db-715a-417c-8af1-34175828ba46",
 			"key": "BASE",
 			"value": "localhost:5000"
 		}
