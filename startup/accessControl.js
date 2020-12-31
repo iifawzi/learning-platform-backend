@@ -13,6 +13,7 @@ ac.grant('principle')
     // classes apis: 
     .create("classes")
     .readOwn("classes")
+    .deleteOwn("classes")
     // tokens: 
     .updateOwn("token")
     

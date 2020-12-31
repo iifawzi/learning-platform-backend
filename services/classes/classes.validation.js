@@ -6,3 +6,8 @@ exports.create = Joi.object({
     class_description: Joi.string().required(),
     join_using: Joi.string().valid("request", "code").required(),
 });
+
+
+exports.deleteClass = Joi.object({
+    class_id: Joi.number().required(),
+});

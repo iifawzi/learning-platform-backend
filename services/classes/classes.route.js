@@ -10,4 +10,5 @@ const isAuth = require("../../middlewares/is-auth");
 // Routes: 
 router.post("/create",isAuth(),granted("create","classes"),validateSchema(classesSchema.create,'body'),classesController.create);
 router.get("/",isAuth(),granted("readOwn","classes"),classesController.getClasses);
-module.exports = router;
+router.delete("/",isAuth(),granted("deleteOwn","classes"),validateSchema(classesSchema.deleteClass,'body'),classesController.deleteClass);
+module.exports = router; 

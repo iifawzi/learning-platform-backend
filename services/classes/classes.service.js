@@ -25,3 +25,11 @@ exports.getClasses = async (teacher_id) => {
     });
     return classes;
 };
+
+
+// get and delete specific class: 
+exports.getAndDeleteClass = async (teacher_id, class_id)=>{
+    
+    const deletedClass = await classesModel.destroy({where: {creator_teacher_id: teacher_id, class_id}});
+    return deletedClass;
+};

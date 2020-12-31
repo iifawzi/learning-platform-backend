@@ -35,3 +35,18 @@ exports.getClasses = async (req,res,next)=>{
         next(err);
     }
 };
+
+exports.deleteClass = async (req,res,next)=>{
+    try {
+        // get class id from body: 
+        const {class_id} = req.body;
+        // get teacher_id from req: 
+        const {teacher_id} = req.requester;
+        // get and delete the class which need to be deleted
+        // this will always return true since we are using where clouse to delete, it may be updated later TODO
+        const deleteCLass = await classesServices.getAndDeleteClass(teacher_id,class_id);
+        return respondWith(true,200,deleteCLass,res);
+    }catch(err){
+        next(err);  
+    }
+};
